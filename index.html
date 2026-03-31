@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <meta name="description" content="Professional portfolio website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">Port<span>.</span></div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">Port<span>folio</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        <a href="admin/login.html" class="admin-link">Admin</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="hero-blob blob-1"></div>
+      <div class="hero-blob blob-2"></div>
+      <div class="hero-grid"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-up">
+          <span class="badge-dot"></span>
+          <span id="heroRole">Available for Work</span>
+        </div>
+        <h1 class="hero-title animate-fade-up delay-1">
+          Hi, I'm <span class="accent" id="heroName">Your Name</span>
+        </h1>
+        <h2 class="hero-subtitle animate-fade-up delay-2" id="heroJobTitle">Full Stack Developer</h2>
+        <p class="hero-bio animate-fade-up delay-3" id="heroBio">Building beautiful, functional digital experiences with passion and precision.</p>
+        <div class="hero-actions animate-fade-up delay-4">
+          <a href="#projects" class="btn btn-primary">View My Work <i class="fas fa-arrow-right"></i></a>
+          <a href="#" id="downloadCV" class="btn btn-outline">Download CV <i class="fas fa-download"></i></a>
+        </div>
+        <div class="hero-stats animate-fade-up delay-5">
+          <div class="stat"><span class="stat-num" id="statYears">0</span><span class="stat-label">Years Exp.</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num" id="statProjects">0</span><span class="stat-label">Projects</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num" id="statClients">0</span><span class="stat-label">Clients</span></div>
+        </div>
+      </div>
+      <div class="hero-visual animate-fade-left delay-2">
+        <div class="avatar-wrapper">
+          <div class="avatar-ring"></div>
+          <img src="assets/img/avatar-placeholder.svg" alt="Profile" id="heroAvatar" class="hero-avatar" />
+          <div class="avatar-badge"><i class="fas fa-code"></i></div>
+        </div>
+        <div class="floating-card card-1"><i class="fas fa-star"></i> Top Rated</div>
+        <div class="floating-card card-2"><i class="fas fa-bolt"></i> Fast Delivery</div>
+      </div>
+    </div>
+    <a href="#about" class="scroll-down">
+      <span>Scroll</span>
+      <div class="scroll-line"><div class="scroll-dot"></div></div>
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Who I <span class="accent">Am</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-image reveal">
+          <div class="about-img-wrap">
+            <img src="assets/img/avatar-placeholder.svg" alt="About" id="aboutAvatar" />
+            <div class="about-img-shape"></div>
+          </div>
+          <div class="about-info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="aboutLocation">Your City, Country</span>
+          </div>
+        </div>
+        <div class="about-content reveal delay-1">
+          <h3 id="aboutName">Your Name</h3>
+          <span class="about-role" id="aboutRole">Full Stack Developer</span>
+          <p class="about-text" id="aboutText">I'm a passionate developer who loves creating elegant solutions to complex problems. With expertise in modern web technologies, I bring ideas to life through clean, efficient code.</p>
+          <div class="about-details">
+            <div class="detail-item"><i class="fas fa-envelope"></i><span id="aboutEmail">hello@example.com</span></div>
+            <div class="detail-item"><i class="fas fa-phone"></i><span id="aboutPhone">+1 234 567 890</span></div>
+            <div class="detail-item"><i class="fas fa-map-marker-alt"></i><span id="aboutLocationDetail">Your City, Country</span></div>
+          </div>
+          <div class="about-social" id="aboutSocial"></div>
+          <a href="#contact" class="btn btn-primary">Let's Talk <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">My Skills</span>
+        <h2 class="section-title">What I <span class="accent">Do</span></h2>
+        <p class="section-desc">Technologies and tools I work with every day</p>
+      </div>
+      <div class="skills-grid" id="skillsGrid">
+        <div class="skills-placeholder">
+          <div class="skill-skeleton"></div>
+          <div class="skill-skeleton"></div>
+          <div class="skill-skeleton"></div>
+          <div class="skill-skeleton"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Portfolio</span>
+        <h2 class="section-title">Recent <span class="accent">Projects</span></h2>
+        <p class="section-desc">A selection of my latest work</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Services</span>
+        <h2 class="section-title">What I <span class="accent">Offer</span></h2>
+        <p class="section-desc">Professional services tailored to your needs</p>
+      </div>
+      <div class="services-grid" id="servicesGrid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+        <p class="section-desc">Have a project in mind? Let's build something great together.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <div class="contact-card">
+            <i class="fas fa-envelope"></i>
+            <div><strong>Email</strong><span id="contactEmail">hello@example.com</span></div>
+          </div>
+          <div class="contact-card">
+            <i class="fas fa-phone"></i>
+            <div><strong>Phone</strong><span id="contactPhone">+1 234 567 890</span></div>
+          </div>
+          <div class="contact-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div><strong>Location</strong><span id="contactLocation">Your City, Country</span></div>
+          </div>
+          <div class="contact-social" id="contactSocial"></div>
+        </div>
+        <form class="contact-form reveal delay-1" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="contactName" name="name" placeholder="John Doe" required />
+            </div>
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" id="contactEmailInput" name="email" placeholder="john@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <input type="text" id="contactSubject" name="subject" placeholder="Project Discussion" />
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea id="contactMessage" name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            Send Message <i class="fas fa-paper-plane"></i>
+          </button>
+          <div id="formMsg" class="form-message"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo">Port<span>folio</span></a>
+          <p id="footerBio">Building digital experiences that matter.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h4>Follow Me</h4>
+          <div class="social-icons" id="footerSocial"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="footerYear"></span> <span id="footerName">Your Name</span>. Crafted with <i class="fas fa-heart"></i></p>
+        <a href="admin/login.html" class="footer-admin-link">Admin Panel</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Project Modal -->
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose"><i class="fas fa-times"></i></button>
+      <img id="modalImg" src="" alt="" />
+      <div class="modal-body">
+        <div class="modal-tags" id="modalTags"></div>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <div class="modal-actions">
+          <a href="#" id="modalLive" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+          <a href="#" id="modalGithub" class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-github"></i> Source Code</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="assets/js/config.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
