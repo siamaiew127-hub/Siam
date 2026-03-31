@@ -5,23 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio</title>
   <meta name="description" content="Professional portfolio website" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
 
-  <!-- LOADER -->
+  <!-- ===== LOADER ===== -->
   <div id="loader">
     <div class="loader-inner">
-      <div class="loader-logo">Port<span>.</span></div>
+      <div class="loader-logo">P<span>.</span></div>
       <div class="loader-bar"><div class="loader-fill"></div></div>
     </div>
   </div>
 
-  <!-- NAVBAR -->
+  <!-- ===== NAVBAR ===== -->
   <nav id="navbar">
     <div class="nav-container">
       <a href="#hero" class="nav-logo">Port<span>folio</span></a>
@@ -44,7 +50,7 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ===== HERO ===== -->
   <section id="hero">
     <div class="hero-bg">
       <div class="hero-blob blob-1"></div>
@@ -77,11 +83,18 @@
       <div class="hero-visual animate-fade-left delay-2">
         <div class="avatar-wrapper">
           <div class="avatar-ring"></div>
+          <div class="avatar-ring ring-2"></div>
           <img src="assets/img/avatar-placeholder.svg" alt="Profile" id="heroAvatar" class="hero-avatar" />
-          <div class="avatar-badge"><i class="fas fa-code"></i></div>
+          <div class="avatar-badge">
+            <i class="fas fa-code"></i>
+          </div>
         </div>
-        <div class="floating-card card-1"><i class="fas fa-star"></i> Top Rated</div>
-        <div class="floating-card card-2"><i class="fas fa-bolt"></i> Fast Delivery</div>
+        <div class="floating-card card-1">
+          <i class="fas fa-star"></i> Top Rated
+        </div>
+        <div class="floating-card card-2">
+          <i class="fas fa-bolt"></i> Fast Delivery
+        </div>
       </div>
     </div>
     <a href="#about" class="scroll-down">
@@ -90,7 +103,7 @@
     </a>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ===== ABOUT ===== -->
   <section id="about" class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -110,12 +123,21 @@
         </div>
         <div class="about-content reveal delay-1">
           <h3 id="aboutName">Your Name</h3>
-          <span class="about-role" id="aboutRole">Full Stack Developer</span>
+          <p class="about-role" id="aboutRole">Full Stack Developer</p>
           <p class="about-text" id="aboutText">I'm a passionate developer who loves creating elegant solutions to complex problems. With expertise in modern web technologies, I bring ideas to life through clean, efficient code.</p>
           <div class="about-details">
-            <div class="detail-item"><i class="fas fa-envelope"></i><span id="aboutEmail">hello@example.com</span></div>
-            <div class="detail-item"><i class="fas fa-phone"></i><span id="aboutPhone">+1 234 567 890</span></div>
-            <div class="detail-item"><i class="fas fa-map-marker-alt"></i><span id="aboutLocationDetail">Your City, Country</span></div>
+            <div class="detail-item">
+              <i class="fas fa-envelope"></i>
+              <span id="aboutEmail">hello@example.com</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-phone"></i>
+              <span id="aboutPhone">+1 234 567 890</span>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span id="aboutLocationDetail">Your City, Country</span>
+            </div>
           </div>
           <div class="about-social" id="aboutSocial"></div>
           <a href="#contact" class="btn btn-primary">Let's Talk <i class="fas fa-arrow-right"></i></a>
@@ -124,7 +146,7 @@
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <!-- ===== SKILLS ===== -->
   <section id="skills" class="section section-alt">
     <div class="container">
       <div class="section-header reveal">
@@ -133,17 +155,18 @@
         <p class="section-desc">Technologies and tools I work with every day</p>
       </div>
       <div class="skills-grid" id="skillsGrid">
+        <!-- Skills loaded dynamically -->
         <div class="skills-placeholder">
-          <div class="skill-skeleton"></div>
-          <div class="skill-skeleton"></div>
-          <div class="skill-skeleton"></div>
-          <div class="skill-skeleton"></div>
+          <div class="skill-skeleton" style="--w:85%"></div>
+          <div class="skill-skeleton" style="--w:70%"></div>
+          <div class="skill-skeleton" style="--w:90%"></div>
+          <div class="skill-skeleton" style="--w:65%"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
+  <!-- ===== PROJECTS ===== -->
   <section id="projects" class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -151,11 +174,13 @@
         <h2 class="section-title">Recent <span class="accent">Projects</span></h2>
         <p class="section-desc">A selection of my latest work</p>
       </div>
-      <div class="projects-grid" id="projectsGrid"></div>
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Projects loaded dynamically -->
+      </div>
     </div>
   </section>
 
-  <!-- SERVICES -->
+  <!-- ===== SERVICES ===== -->
   <section id="services" class="section section-alt">
     <div class="container">
       <div class="section-header reveal">
@@ -163,11 +188,13 @@
         <h2 class="section-title">What I <span class="accent">Offer</span></h2>
         <p class="section-desc">Professional services tailored to your needs</p>
       </div>
-      <div class="services-grid" id="servicesGrid"></div>
+      <div class="services-grid" id="servicesGrid">
+        <!-- Services loaded dynamically -->
+      </div>
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- ===== CONTACT ===== -->
   <section id="contact" class="section">
     <div class="container">
       <div class="section-header reveal">
@@ -179,15 +206,24 @@
         <div class="contact-info reveal">
           <div class="contact-card">
             <i class="fas fa-envelope"></i>
-            <div><strong>Email</strong><span id="contactEmail">hello@example.com</span></div>
+            <div>
+              <strong>Email</strong>
+              <span id="contactEmail">hello@example.com</span>
+            </div>
           </div>
           <div class="contact-card">
             <i class="fas fa-phone"></i>
-            <div><strong>Phone</strong><span id="contactPhone">+1 234 567 890</span></div>
+            <div>
+              <strong>Phone</strong>
+              <span id="contactPhone">+1 234 567 890</span>
+            </div>
           </div>
           <div class="contact-card">
             <i class="fas fa-map-marker-alt"></i>
-            <div><strong>Location</strong><span id="contactLocation">Your City, Country</span></div>
+            <div>
+              <strong>Location</strong>
+              <span id="contactLocation">Your City, Country</span>
+            </div>
           </div>
           <div class="contact-social" id="contactSocial"></div>
         </div>
@@ -219,7 +255,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer id="footer">
     <div class="container">
       <div class="footer-inner">
@@ -260,15 +296,21 @@
         <h3 id="modalTitle"></h3>
         <p id="modalDesc"></p>
         <div class="modal-actions">
-          <a href="#" id="modalLive" class="btn btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-          <a href="#" id="modalGithub" class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-github"></i> Source Code</a>
+          <a href="#" id="modalLive" class="btn btn-primary" target="_blank" rel="noopener">
+            <i class="fas fa-external-link-alt"></i> Live Demo
+          </a>
+          <a href="#" id="modalGithub" class="btn btn-outline" target="_blank" rel="noopener">
+            <i class="fab fa-github"></i> Source Code
+          </a>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Toast Notification -->
   <div id="toast" class="toast"></div>
 
+  <!-- Scripts -->
   <script src="assets/js/config.js"></script>
   <script src="assets/js/main.js"></script>
 </body>

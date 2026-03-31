@@ -5,114 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Login | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="../assets/css/style.css" />
   <style>
-    #loader { display: none; }
-    body {
-      display: flex; align-items: center; justify-content: center;
-      min-height: 100vh; padding: 24px; background: var(--bg-alt);
-    }
-    .login-wrap {
-      width: 100%; max-width: 420px;
-    }
-    .login-brand {
-      text-align: center; margin-bottom: 40px;
-    }
-    .login-brand h1 {
-      font-family: var(--font-display);
-      font-size: 2.2rem; font-weight: 300; letter-spacing: 8px;
-      text-transform: uppercase; color: var(--text);
-    }
-    .login-brand h1 span { color: var(--accent); }
-    .login-brand p {
-      font-size: 0.72rem; font-weight: 500; letter-spacing: 2.5px;
-      text-transform: uppercase; color: var(--text-muted); margin-top: 8px;
-    }
-    .login-card {
-      background: var(--bg-card); border: 1px solid var(--border);
-      border-radius: var(--radius-md); padding: 44px 40px;
-      box-shadow: var(--shadow-md);
-    }
-    .login-card h2 {
-      font-family: var(--font-display);
-      font-size: 1.6rem; font-weight: 300; margin-bottom: 28px; color: var(--text);
-    }
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; background: var(--bg-alt); }
+    .login-card { width: 100%; max-width: 420px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 48px 40px; box-shadow: var(--shadow-lg); }
+    .login-logo { text-align: center; margin-bottom: 32px; }
+    .login-logo h1 { font-size: 1.8rem; font-weight: 900; letter-spacing: -1px; }
+    .login-logo h1 span { color: var(--accent); }
+    .login-logo p { color: var(--text-secondary); font-size: 0.88rem; margin-top: 6px; }
+    .login-card h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 28px; }
     .input-group { position: relative; }
-    .input-group i {
-      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
-      color: var(--text-muted); font-size: 0.82rem; pointer-events: none;
-    }
-    .input-group input { padding-left: 40px !important; }
-    .toggle-pass {
-      position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
-      cursor: pointer; color: var(--text-muted); background: none; border: none;
-      font-size: 0.82rem; transition: color var(--transition);
-    }
-    .toggle-pass:hover { color: var(--accent); }
-    .login-error {
-      padding: 12px 16px; border-radius: var(--radius);
-      background: rgba(239,68,68,0.07); color: #dc2626;
-      font-size: 0.85rem; font-weight: 500; margin-bottom: 20px;
-      display: none; border: 1px solid rgba(239,68,68,0.15);
-    }
+    .input-group i { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
+    .input-group input { padding-left: 42px !important; }
+    .toggle-pass { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--text-muted); background: none; border: none; font-size: 0.9rem; }
+    .login-error { padding: 12px 16px; border-radius: var(--radius-sm); background: rgba(239,68,68,0.1); color: #dc2626; font-size: 0.88rem; font-weight: 600; margin-bottom: 20px; display: none; }
     .login-error.show { display: block; }
-    .back-link {
-      display: flex; align-items: center; gap: 8px;
-      color: var(--text-muted); font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 1.5px; text-transform: uppercase;
-      margin-top: 24px; justify-content: center; transition: color var(--transition);
-    }
+    .back-link { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 0.85rem; margin-top: 20px; justify-content: center; transition: color var(--transition); }
     .back-link:hover { color: var(--accent); }
+    #loader { display: none; }
   </style>
 </head>
 <body>
-  <div class="login-wrap">
-    <div class="login-brand">
+  <div class="login-card">
+    <div class="login-logo">
       <h1>Port<span>folio</span></h1>
-      <p>Admin Access</p>
+      <p>Admin Dashboard Access</p>
     </div>
-    <div class="login-card">
-      <h2>Welcome back</h2>
-      <div class="login-error" id="loginError"></div>
-      <form id="loginForm">
-        <div class="form-group">
-          <label>Username</label>
-          <div class="input-group">
-            <i class="fas fa-user"></i>
-            <input type="text" id="username" placeholder="admin" required autocomplete="username" />
-          </div>
+    <h2>Welcome back</h2>
+    <div class="login-error" id="loginError"></div>
+    <form id="loginForm">
+      <div class="form-group">
+        <label>Username</label>
+        <div class="input-group">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" placeholder="admin" required autocomplete="username" />
         </div>
-        <div class="form-group">
-          <label>Password</label>
-          <div class="input-group">
-            <i class="fas fa-lock"></i>
-            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password" />
-            <button type="button" class="toggle-pass" id="togglePass"><i class="fas fa-eye"></i></button>
-          </div>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password" />
+          <button type="button" class="toggle-pass" id="togglePass"><i class="fas fa-eye"></i></button>
         </div>
-        <button type="submit" class="btn btn-primary btn-full" id="loginBtn" style="margin-top:8px;">
-          Sign In <i class="fas fa-arrow-right"></i>
-        </button>
-      </form>
-      <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-    </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-full" id="loginBtn">
+        Sign In <i class="fas fa-arrow-right"></i>
+      </button>
+    </form>
+    <a href="../index.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
   </div>
 
   <script src="../assets/js/config.js"></script>
   <script>
+    // Theme
     const t = localStorage.getItem('theme') || 'light';
     document.documentElement.setAttribute('data-theme', t);
 
+    // Toggle password
     document.getElementById('togglePass').addEventListener('click', function() {
       const inp = document.getElementById('password');
-      const show = inp.type === 'password';
-      inp.type = show ? 'text' : 'password';
-      this.querySelector('i').className = show ? 'fas fa-eye-slash' : 'fas fa-eye';
+      const isPass = inp.type === 'password';
+      inp.type = isPass ? 'text' : 'password';
+      this.querySelector('i').className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
     });
 
+    // Login form
     document.getElementById('loginForm').addEventListener('submit', async e => {
       e.preventDefault();
       const btn = document.getElementById('loginBtn');
@@ -120,6 +80,7 @@
       err.classList.remove('show');
       btn.disabled = true;
       btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
+
       try {
         const res = await fetch(`${CONFIG.API_BASE}/api/auth/login`, {
           method: 'POST',
@@ -145,6 +106,7 @@
       }
     });
 
+    // Redirect if already logged in
     if (localStorage.getItem('adminToken')) {
       window.location.href = 'dashboard.html';
     }

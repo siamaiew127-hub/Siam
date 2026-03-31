@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/admin.css" />
+</head>
+<body>
+
+<!-- Sidebar Overlay (mobile) -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ===== SIDEBAR ===== -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">Port<span>folio</span></div>
+  <div class="sidebar-user">
+    <strong id="sidebarUsername">Admin</strong>
+    Administrator
+  </div>
+  <nav class="sidebar-nav">
+    <div class="sidebar-section">Overview</div>
+    <button class="nav-item active" data-panel="overview"><i class="fas fa-chart-pie"></i> Dashboard</button>
+
+    <div class="sidebar-section">Content</div>
+    <button class="nav-item" data-panel="profile"><i class="fas fa-user"></i> Profile</button>
+    <button class="nav-item" data-panel="skills"><i class="fas fa-tools"></i> Skills</button>
+    <button class="nav-item" data-panel="projects"><i class="fas fa-folder"></i> Projects</button>
+    <button class="nav-item" data-panel="services"><i class="fas fa-briefcase"></i> Services</button>
+
+    <div class="sidebar-section">Settings</div>
+    <button class="nav-item" data-panel="social"><i class="fas fa-share-alt"></i> Social Links</button>
+    <button class="nav-item" data-panel="cv"><i class="fas fa-file-pdf"></i> CV / Resume</button>
+    <button class="nav-item" data-panel="messages"><i class="fas fa-envelope"></i> Messages <span id="unreadBadge" style="background:var(--accent);color:#fff;font-size:0.65rem;padding:2px 6px;border-radius:999px;margin-left:4px;display:none;"></span></button>
+    <button class="nav-item" data-panel="security"><i class="fas fa-shield-alt"></i> Security</button>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="nav-item" id="themeToggleAdmin"><i class="fas fa-moon" id="themeIconAdmin"></i> Toggle Theme</button>
+    <button class="nav-item btn-logout" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+  </div>
+</aside>
+
+<!-- ===== MAIN ===== -->
+<div class="main-content">
+  <div class="topbar">
+    <div class="topbar-left">
+      <button class="sidebar-toggle-btn" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+      <h2 id="panelTitle">Dashboard</h2>
+    </div>
+    <div class="topbar-actions">
+      <a href="../index.html" target="_blank" class="btn btn-outline" style="padding:7px 16px;font-size:0.82rem;">
+        <i class="fas fa-external-link-alt"></i> View Site
+      </a>
+    </div>
+  </div>
+
+  <div class="content-area">
+
+    <!-- ===== OVERVIEW PANEL ===== -->
+    <div class="panel active" id="panel-overview">
+      <div class="stats-row">
+        <div class="stat-card"><div class="sc-icon"><i class="fas fa-tools"></i></div><div class="sc-num" id="statSkillsCount">0</div><div class="sc-label">Skills</div></div>
+        <div class="stat-card"><div class="sc-icon"><i class="fas fa-folder"></i></div><div class="sc-num" id="statProjectsCount">0</div><div class="sc-label">Projects</div></div>
+        <div class="stat-card"><div class="sc-icon"><i class="fas fa-briefcase"></i></div><div class="sc-num" id="statServicesCount">0</div><div class="sc-label">Services</div></div>
+        <div class="stat-card"><div class="sc-icon"><i class="fas fa-envelope"></i></div><div class="sc-num" id="statMsgCount">0</div><div class="sc-label">Messages</div></div>
+      </div>
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Quick Actions</h3>
+        </div>
+        <div class="dash-card-body" style="display:flex;gap:12px;flex-wrap:wrap;">
+          <button class="btn btn-primary" onclick="switchPanel('projects')"><i class="fas fa-plus"></i> Add Project</button>
+          <button class="btn btn-outline" onclick="switchPanel('skills')"><i class="fas fa-plus"></i> Add Skill</button>
+          <button class="btn btn-outline" onclick="switchPanel('services')"><i class="fas fa-plus"></i> Add Service</button>
+          <button class="btn btn-outline" onclick="switchPanel('messages')"><i class="fas fa-envelope"></i> View Messages</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PROFILE PANEL ===== -->
+    <div class="panel" id="panel-profile">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Profile Information</h3></div>
+        <div class="dash-card-body">
+          <!-- Avatar -->
+          <div class="form-group">
+            <label>Profile Photo</label>
+            <div class="avatar-upload-area" onclick="document.getElementById('avatarInput').click()">
+              <div class="avatar-preview" id="avatarPreview">
+                <img id="currentAvatar" src="" alt="" style="display:none;" />
+                <i class="fas fa-user" id="avatarIcon"></i>
+              </div>
+              <div class="upload-info">
+                <p>Click to upload photo</p>
+                <span>JPG, PNG or WebP. Max 5MB.</span>
+                <div id="avatarUploadStatus" style="margin-top:6px;font-size:0.78rem;"></div>
+              </div>
+            </div>
+            <input type="file" id="avatarInput" accept="image/*" hidden />
+          </div>
+
+          <form class="admin-form" id="profileForm">
+            <div class="form-row-2">
+              <div class="form-group"><label>Full Name</label><input type="text" id="pName" placeholder="Your Name" /></div>
+              <div class="form-group"><label>Job Title / Role</label><input type="text" id="pRole" placeholder="Full Stack Developer" /></div>
+            </div>
+            <div class="form-group"><label>Tagline (short)</label><input type="text" id="pTagline" placeholder="Building digital experiences..." /></div>
+            <div class="form-group"><label>Bio (Hero section)</label><textarea id="pBio" rows="3" placeholder="Short description shown in hero..."></textarea></div>
+            <div class="form-group"><label>About Text (About section)</label><textarea id="pAbout" rows="4" placeholder="Longer description for About Me..."></textarea></div>
+            <div class="form-row-2">
+              <div class="form-group"><label>Email</label><input type="email" id="pEmail" placeholder="hello@example.com" /></div>
+              <div class="form-group"><label>Phone</label><input type="text" id="pPhone" placeholder="+1 234 567 890" /></div>
+            </div>
+            <div class="form-group"><label>Location</label><input type="text" id="pLocation" placeholder="City, Country" /></div>
+            <div class="form-row-2">
+              <div class="form-group"><label>Years of Experience</label><input type="number" id="pYears" min="0" /></div>
+              <div class="form-group"><label>Projects Completed</label><input type="number" id="pProjects" min="0" /></div>
+            </div>
+            <div class="form-group"><label>Satisfied Clients</label><input type="number" id="pClients" min="0" style="max-width:200px;" /></div>
+            <button type="submit" class="btn btn-primary">Save Profile <i class="fas fa-save"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SKILLS PANEL ===== -->
+    <div class="panel" id="panel-skills">
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Skills</h3>
+          <button class="btn btn-primary" id="addSkillBtn" style="padding:7px 16px;font-size:0.82rem;"><i class="fas fa-plus"></i> Add Skill</button>
+        </div>
+        <div class="dash-card-body">
+          <div class="table-wrap"><table id="skillsTable">
+            <thead><tr><th>Skill</th><th>Category</th><th>Level</th><th>Actions</th></tr></thead>
+            <tbody id="skillsBody"></tbody>
+          </table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PROJECTS PANEL ===== -->
+    <div class="panel" id="panel-projects">
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Projects</h3>
+          <button class="btn btn-primary" id="addProjectBtn" style="padding:7px 16px;font-size:0.82rem;"><i class="fas fa-plus"></i> Add Project</button>
+        </div>
+        <div class="dash-card-body">
+          <div class="table-wrap"><table id="projectsTable">
+            <thead><tr><th>Title</th><th>Category</th><th>Featured</th><th>Actions</th></tr></thead>
+            <tbody id="projectsBody"></tbody>
+          </table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SERVICES PANEL ===== -->
+    <div class="panel" id="panel-services">
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Services</h3>
+          <button class="btn btn-primary" id="addServiceBtn" style="padding:7px 16px;font-size:0.82rem;"><i class="fas fa-plus"></i> Add Service</button>
+        </div>
+        <div class="dash-card-body">
+          <div class="table-wrap"><table id="servicesTable">
+            <thead><tr><th>Icon</th><th>Title</th><th>Description</th><th>Actions</th></tr></thead>
+            <tbody id="servicesBody"></tbody>
+          </table></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SOCIAL PANEL ===== -->
+    <div class="panel" id="panel-social">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Social Links</h3></div>
+        <div class="dash-card-body">
+          <form class="admin-form" id="socialForm">
+            <div class="form-group"><label><i class="fab fa-facebook-f" style="color:#1877f2;margin-right:8px;"></i>Facebook URL</label><input type="url" id="sFacebook" placeholder="https://facebook.com/yourpage" /></div>
+            <div class="form-group"><label><i class="fab fa-instagram" style="color:#e1306c;margin-right:8px;"></i>Instagram URL</label><input type="url" id="sInstagram" placeholder="https://instagram.com/yourhandle" /></div>
+            <div class="form-group"><label><i class="fab fa-linkedin-in" style="color:#0077b5;margin-right:8px;"></i>LinkedIn URL</label><input type="url" id="sLinkedin" placeholder="https://linkedin.com/in/yourprofile" /></div>
+            <div class="form-group"><label><i class="fab fa-github" style="margin-right:8px;"></i>GitHub URL</label><input type="url" id="sGithub" placeholder="https://github.com/yourusername" /></div>
+            <div class="form-group"><label><i class="fab fa-twitter" style="color:#1da1f2;margin-right:8px;"></i>Twitter / X URL</label><input type="url" id="sTwitter" placeholder="https://twitter.com/yourhandle" /></div>
+            <div class="form-group"><label><i class="fab fa-whatsapp" style="color:#25d366;margin-right:8px;"></i>WhatsApp Number</label><input type="text" id="sWhatsapp" placeholder="+1234567890" /><span class="form-hint">Include country code, e.g. +1234567890</span></div>
+            <button type="submit" class="btn btn-primary">Save Links <i class="fas fa-save"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CV PANEL ===== -->
+    <div class="panel" id="panel-cv">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>CV / Resume</h3></div>
+        <div class="dash-card-body">
+          <div id="currentCVInfo" style="margin-bottom:24px;padding:16px;background:var(--bg-alt);border-radius:var(--radius-sm);border:1px solid var(--border);display:none;">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+              <div><i class="fas fa-file-pdf" style="color:var(--accent);margin-right:8px;"></i><strong id="cvFilename">CV.pdf</strong><br><span style="font-size:0.78rem;color:var(--text-muted);" id="cvDate"></span></div>
+              <div style="display:flex;gap:8px;">
+                <a id="cvDownloadBtn" href="#" target="_blank" class="btn btn-outline" style="padding:7px 14px;font-size:0.82rem;">
+                  <i class="fas fa-download"></i> Download
+                </a>
+                <button class="btn btn-outline" id="deleteCVBtn" style="padding:7px 14px;font-size:0.82rem;color:#dc2626;border-color:rgba(220,38,38,0.3);">
+                  <i class="fas fa-trash"></i> Remove
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="avatar-upload-area" style="flex-direction:column;text-align:center;" onclick="document.getElementById('cvInput').click()">
+            <i class="fas fa-cloud-upload-alt" style="font-size:2.5rem;color:var(--accent);margin-bottom:12px;"></i>
+            <p style="font-weight:700;margin-bottom:6px;">Click to upload CV</p>
+            <span style="font-size:0.82rem;color:var(--text-muted);">PDF, DOC, DOCX. Max 10MB.</span>
+            <div id="cvUploadStatus" style="margin-top:10px;font-size:0.82rem;font-weight:600;"></div>
+          </div>
+          <input type="file" id="cvInput" accept=".pdf,.doc,.docx" hidden />
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== MESSAGES PANEL ===== -->
+    <div class="panel" id="panel-messages">
+      <div class="dash-card">
+        <div class="dash-card-header">
+          <h3>Contact Messages</h3>
+          <span id="msgCountBadge" class="badge badge-orange">0 messages</span>
+        </div>
+        <div class="dash-card-body">
+          <div id="messagesList"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== SECURITY PANEL ===== -->
+    <div class="panel" id="panel-security">
+      <div class="dash-card">
+        <div class="dash-card-header"><h3>Change Password</h3></div>
+        <div class="dash-card-body">
+          <form class="admin-form" id="passwordForm" style="max-width:420px;">
+            <div class="form-group"><label>Current Password</label><input type="password" id="currentPass" required /></div>
+            <div class="form-group"><label>New Password</label><input type="password" id="newPass" required /></div>
+            <div class="form-group"><label>Confirm New Password</label><input type="password" id="confirmPass" required /></div>
+            <button type="submit" class="btn btn-primary">Update Password <i class="fas fa-shield-alt"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /content-area -->
+</div><!-- /main-content -->
+
+<!-- ===== SKILL MODAL ===== -->
+<div class="admin-modal" id="skillModal">
+  <div class="modal-backdrop" onclick="closeAdminModal('skillModal')"></div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="skillModalTitle">Add Skill</h3>
+      <button onclick="closeAdminModal('skillModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body-inner">
+      <form class="admin-form" id="skillForm">
+        <input type="hidden" id="skillId" />
+        <div class="form-group"><label>Skill Name</label><input type="text" id="skillName" placeholder="e.g. JavaScript" required /></div>
+        <div class="form-group"><label>Category</label><input type="text" id="skillCategory" placeholder="e.g. Frontend, Backend, Design..." /></div>
+        <div class="form-group">
+          <label>Proficiency Level: <span id="levelVal">80</span>%</label>
+          <div class="range-group">
+            <input type="range" id="skillLevel" min="0" max="100" value="80" oninput="document.getElementById('levelVal').textContent=this.value" />
+          </div>
+        </div>
+        <div class="form-group"><label>Order (optional)</label><input type="number" id="skillOrder" min="0" value="0" /></div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeAdminModal('skillModal')">Cancel</button>
+      <button class="btn btn-primary" id="saveSkillBtn">Save Skill <i class="fas fa-save"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROJECT MODAL ===== -->
+<div class="admin-modal" id="projectModal">
+  <div class="modal-backdrop" onclick="closeAdminModal('projectModal')"></div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="projectModalTitle">Add Project</h3>
+      <button onclick="closeAdminModal('projectModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body-inner">
+      <form class="admin-form" id="projectForm" enctype="multipart/form-data">
+        <input type="hidden" id="projectId" />
+        <div class="form-group"><label>Project Title</label><input type="text" id="projectTitle" required placeholder="My Awesome Project" /></div>
+        <div class="form-group"><label>Description</label><textarea id="projectDesc" required placeholder="Brief project description..."></textarea></div>
+        <div class="form-row-2">
+          <div class="form-group"><label>Category</label><input type="text" id="projectCategory" placeholder="Web, Mobile, Design..." /></div>
+          <div class="form-group"><label>Order</label><input type="number" id="projectOrder" min="0" value="0" /></div>
+        </div>
+        <div class="form-group"><label>Technologies (comma-separated)</label><input type="text" id="projectTech" placeholder="React, Node.js, MongoDB" /></div>
+        <div class="form-row-2">
+          <div class="form-group"><label>Live URL</label><input type="url" id="projectLive" placeholder="https://..." /></div>
+          <div class="form-group"><label>GitHub URL</label><input type="url" id="projectGithub" placeholder="https://github.com/..." /></div>
+        </div>
+        <div class="form-group">
+          <label>Project Image</label>
+          <input type="file" id="projectImage" accept="image/*" style="padding:8px;border:1.5px solid var(--border);border-radius:var(--radius-sm);width:100%;background:var(--bg);" />
+          <div id="currentProjectImg" style="margin-top:8px;display:none;"><img style="max-height:80px;border-radius:8px;" id="projectImgPreview" /></div>
+        </div>
+        <div class="form-group" style="display:flex;align-items:center;gap:10px;">
+          <input type="checkbox" id="projectFeatured" style="width:auto;margin:0;" />
+          <label for="projectFeatured" style="margin:0;cursor:pointer;">Mark as Featured</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeAdminModal('projectModal')">Cancel</button>
+      <button class="btn btn-primary" id="saveProjectBtn">Save Project <i class="fas fa-save"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICE MODAL ===== -->
+<div class="admin-modal" id="serviceModal">
+  <div class="modal-backdrop" onclick="closeAdminModal('serviceModal')"></div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="serviceModalTitle">Add Service</h3>
+      <button onclick="closeAdminModal('serviceModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body-inner">
+      <form class="admin-form" id="serviceForm">
+        <input type="hidden" id="serviceId" />
+        <div class="form-row-2">
+          <div class="form-group"><label>Icon (emoji)</label><input type="text" id="serviceIcon" placeholder="💡" maxlength="4" /></div>
+          <div class="form-group"><label>Order</label><input type="number" id="serviceOrder" min="0" value="0" /></div>
+        </div>
+        <div class="form-group"><label>Service Title</label><input type="text" id="serviceTitle" required placeholder="Web Development" /></div>
+        <div class="form-group"><label>Description</label><textarea id="serviceDesc" required placeholder="Brief description of the service..."></textarea></div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeAdminModal('serviceModal')">Cancel</button>
+      <button class="btn btn-primary" id="saveServiceBtn">Save Service <i class="fas fa-save"></i></button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MSG VIEW MODAL ===== -->
+<div class="admin-modal" id="msgViewModal">
+  <div class="modal-backdrop" onclick="closeAdminModal('msgViewModal')"></div>
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3>Message</h3>
+      <button onclick="closeAdminModal('msgViewModal')"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="modal-body-inner">
+      <div style="margin-bottom:16px;padding:14px;background:var(--bg-alt);border-radius:var(--radius-sm);">
+        <div style="display:flex;flex-direction:column;gap:8px;font-size:0.88rem;">
+          <div><strong>From:</strong> <span id="mvName"></span> (<span id="mvEmail"></span>)</div>
+          <div><strong>Subject:</strong> <span id="mvSubject"></span></div>
+          <div><strong>Date:</strong> <span id="mvDate"></span></div>
+        </div>
+      </div>
+      <p id="mvMessage" style="line-height:1.75;font-size:0.92rem;white-space:pre-wrap;"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeAdminModal('msgViewModal')">Close</button>
+      <a id="mvReply" href="#" class="btn btn-primary"><i class="fas fa-reply"></i> Reply via Email</a>
+    </div>
+  </div>
+</div>
+
+<!-- Notify -->
+<div class="notify" id="notify"></div>
+
+<script src="../assets/js/config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
